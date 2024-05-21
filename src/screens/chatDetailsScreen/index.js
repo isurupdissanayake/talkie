@@ -1,19 +1,14 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { screenHeaders } from '../../constants/screenHeaders';
 
-export class LoginScreen extends React.Component {
+export class ChatDetailsScreen extends React.Component {
   constructor(props){
     super(props);
   }
     render(){
         return(
             <View style={styles.container}>
-                <Text>login screen</Text>
-                <Button 
-                  title='Log In'
-                  onPress={()=>this.props.navigation.navigate("safaf")}
-                />
+                <Text>Chat View</Text>
             </View>
         );
     }
