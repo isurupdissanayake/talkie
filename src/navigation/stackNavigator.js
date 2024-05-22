@@ -1,5 +1,5 @@
 import {createStackNavigator} from '@react-navigation/stack'
-import { ChatDetailsScreen, ChatViewScreen, LoginScreen, SplashScreen } from '../screens';
+import { ChatDetailsScreen, ChatViewScreen, LoginScreen, SplashScreen, SignUpScreen } from '../screens';
 import { screenHeaders } from '../constants/screenHeaders';
 import TabNavigator from './tabNavigator';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,6 +12,7 @@ function StackNavigator () {
             <SplashStack.Screen
                 name={screenHeaders.splashScreen}
                 component={SplashScreen}
+                options={{headerShown: false}}
             />
             <SplashStack.Screen
                 name={screenHeaders.loginScreen}
@@ -29,6 +30,10 @@ function StackNavigator () {
             <SplashStack.Screen
                 name={screenHeaders.chatDetailsScreen}
                 component={ChatDetailsScreen}
+            />
+            <SplashStack.Screen
+                name={screenHeaders.signUpScreen}
+                component={SignUpScreen}
             />
         </SplashStack.Navigator>
     )

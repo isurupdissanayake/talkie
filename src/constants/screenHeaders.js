@@ -7,6 +7,7 @@ const screenHeaders = {
     profileScreen : "Profile",
     chatViewScreen : "Chat View",
     chatDetailsScreen : "Chat Details",
+    signUpScreen: "Sign Up"
 }
 
 export {screenHeaders};

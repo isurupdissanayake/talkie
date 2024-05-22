@@ -12,10 +12,6 @@ export class GroupChatScreen extends React.Component {
     };
   }
 
-  setGroupNames() {
-    this.setState({groupNames: GetGroupNames()});
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -23,13 +19,6 @@ export class GroupChatScreen extends React.Component {
       </View>
     );
   }
-}
-
-function GetGroupNames () {
-  var groupNames = ["Isuru Praneeth", "Haritha Prasanga"]
-  return (
-    groupNames
-  )
 }
 
 const styles = StyleSheet.create({

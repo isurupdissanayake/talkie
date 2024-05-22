@@ -5,6 +5,7 @@ import {ProfileScreen} from './profileScreen/index.js'
 import { GroupChatScreen } from './groupChatScreen/index.js'
 import { ChatViewScreen } from './chatViewScreen/index.js'
 import { ChatDetailsScreen } from './chatDetailsScreen/index.js'
+import { SignUpScreen } from './signUpScreen/index.js'
 
 
 export {
@@ -15,4 +16,5 @@ export {
     GroupChatScreen,
     ChatViewScreen,
     ChatDetailsScreen,
+    SignUpScreen,
 }
