@@ -1,10 +1,7 @@
 import { CreatUser, VerifyUser } from '../controllers/accountController.js';
-import { errorResponse } from '../constants/index.js';
-
 import express, { response } from 'express';
-const router = express.Router();
 
-const app = express()
+const router = express.Router();
 
 router.post("/user/create", async (req,res) => {
     try {
@@ -18,7 +15,7 @@ router.post("/user/create", async (req,res) => {
 router.get("/user/getUser", async (req,res) => {
     try {
        const account = await VerifyUser(req.body);
-       res.send(account)
+       res.send(account);
     } catch (error) {
         res.send(error);
     }

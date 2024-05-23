@@ -31,9 +31,9 @@ async function VerifyUser(body) {
            } else {
             return true
         }
-    } catch (error) {
-        return (error);
-    }
+    } finally {
+        await client.close();
+      }
 }
 
 export {CreatUser, VerifyUser}
