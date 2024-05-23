@@ -29,4 +29,20 @@ async function GetGroupById(body) {
     }
 }
 
-export {CreateGroup, GetGroupById};
+async function GetAllGroups(body) {
+    const client = new MongoClient(uri);
+    var result = []
+    try {
+        const database = client.db("talkie");
+        const groups = database.collection("groups");
+        const cursor = groups.find()
+        await cursor.forEach(doc => {
+            result.push(doc);
+        })
+    } finally {
+        await client.close();
+    }
+    return result;
+}
+
+export {CreateGroup, GetGroupById, GetAllGroups};
