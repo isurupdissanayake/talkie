@@ -2,7 +2,8 @@ const uri = "mongodb+srv://talkiechatapp:Rumkaw-8xiwna-fomjuw@talkie.kozklde.mon
 
 const errorResponse = {
     emailNotFound : "emailNotFound",
-    passwordIncorrect : "passwordNotFound"
+    passwordIncorrect : "passwordNotFound",
+    userNotFound : "userNotFound",
 }
 
 export {uri, errorResponse}
