@@ -8,6 +8,8 @@ async function InitializeWS(body) {
   const database = client.db("talkie");
   const messages = database.collection("messages");
 
+  const initialMessages = await GetInitialMessages(body);
+
   const httpServer = createServer();
   const io = new Server(httpServer);
   io.on("connection", (socket) => {
@@ -20,6 +22,10 @@ async function InitializeWS(body) {
     })
     
 
+    socket.on("initial_request", () => {
+      socket.emit("initial_messages", initialMessages);
+    });
+
     socket.on("create_message", (arg) => {
         PostNewMessage(arg);
     });
@@ -29,6 +35,7 @@ async function InitializeWS(body) {
       changestream.close();
     });
   });
+  
   httpServer.listen(8080);
 }
 
@@ -46,4 +53,21 @@ async function PostNewMessage(data) {
       } finally {
         await client.close();
       }
+}
+
+async function GetInitialMessages(body) {
+  const client = new MongoClient(uri);
+  var result = []
+  try {
+    const database = client.db("talkie");
+    const messages = database.collection("messages");
+    const query = {groupId: body.groupId};
+    const cursor = messages.find(query)
+    await cursor.forEach(doc => {
+      result.push(doc);
+    });
+  } finally {
+    await client.close();
+  }
+  return result;
 }
