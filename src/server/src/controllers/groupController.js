@@ -45,4 +45,35 @@ async function GetAllGroups(body) {
     return result;
 }
 
-export {CreateGroup, GetGroupById, GetAllGroups};
+async function JoinGroup (body) {
+    const client = new MongoClient(uri);
+    try {
+        const database = client.db("talkie");
+        const members = database.collection("members");
+
+        const doc = {...body};
+        const result = await members.insertOne(doc);
+        console.log(`member created ID: ${result.insertedId}`);
+    } finally {
+        await client.close();
+    }
+}
+
+async function GetMembers (body) {
+    const client = new MongoClient(uri);
+    var result = []
+    try {
+        const database = client.db("talkie");
+        const groups = database.collection("members");
+        const query = {groupId: body.groupId};
+        const cursor = groups.find(query)
+        await cursor.forEach(doc => {
+            result.push(doc.userId);
+        })
+    } finally {
+        await client.close();
+    }
+    return result;
+}
+
+export {CreateGroup, GetGroupById, GetAllGroups, JoinGroup, GetMembers};

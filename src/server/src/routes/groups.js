@@ -1,6 +1,6 @@
 import { CreatUser, VerifyUser } from '../controllers/accountController.js';
 import express, { response } from 'express';
-import { CreateGroup, GetAllGroups, GetGroupById } from '../controllers/groupController.js';
+import { CreateGroup, GetAllGroups, GetGroupById, GetMembers, JoinGroup } from '../controllers/groupController.js';
 
 const router = express.Router();
 
@@ -25,7 +25,26 @@ router.get("/groups/getbyid", async (req, res) => {
 
 router.get("/groups/getall", async (req, res) => {
     try {
-        const groups = await GetAllGroups(req);
+        const groups = await GetAllGroups(req.body);
+        console.log(groups);
+        res.send(groups);
+    } catch (error) {
+        res.send(error);
+    }
+})
+
+router.post("/groups/join", async (req, res) => {
+    try {
+        await JoinGroup(req.body);
+        res.send("Joined group");
+    } catch (error) {
+        res.send(error);
+    }
+})
+
+router.get("/groups/getmembers", async (req, res) => {
+    try {
+        const groups = await GetMembers(req.body);
         console.log(groups);
         res.send(groups);
     } catch (error) {
