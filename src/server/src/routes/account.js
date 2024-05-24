@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.post("/user/create", async (req,res) => {
     try {
-        await CreatUser(req.body);
-        res.send("user created");
+        const account = await CreatUser(req.body);
+        res.send(account);
     } catch (error) {
         res.send(error);
     }

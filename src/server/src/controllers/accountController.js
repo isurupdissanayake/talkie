@@ -10,6 +10,7 @@ async function CreatUser(body) {
     const doc = { ...body };
     const result = await users.insertOne(doc);
     console.log(`user created with ID: ${result.insertedId}`);
+    return result.insertedId;
   } finally {
     await client.close();
   }
