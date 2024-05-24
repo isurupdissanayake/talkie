@@ -32,4 +32,5 @@ Dababase Implementations -
    - messages collection
   
 To test API's and Websocket use the following Postman collection
-Postman collection
+ - API collection - https://api.postman.com/collections/14486304-5ab64c09-afca-48ae-8f59-e13c3114ab48?access_key=PMAT-01HYMZS350YCSV5PPYM9P4C830
+ - Websocket - 
