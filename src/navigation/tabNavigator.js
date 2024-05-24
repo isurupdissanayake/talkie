@@ -6,7 +6,15 @@ const Tab = createBottomTabNavigator();
 
 function TabNavigator () {
     return (
-        <Tab.Navigator initialRouteName={screenHeaders.groupChatScreen}>
+        <Tab.Navigator initialRouteName={screenHeaders.groupChatScreen}
+        screenOptions={{
+            headerBackTitle: false,
+            headerStyle: { backgroundColor: "#101010" },
+            headerShadowVisible: false, // applied here
+            headerBackTitleVisible: false,
+            headerTitleStyle: { color: "#ffff" },
+          }}
+        >
             <Tab.Screen 
                 name={screenHeaders.groupChatScreen}
                 component={GroupChatScreen}
