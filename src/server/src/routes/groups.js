@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post("/groups/create", async (req,res) => {
     try {
-        await CreateGroup(req.body);
-        res.send("group created");
+        const group = await CreateGroup(req.body);
+        res.send(group);
     } catch (error) {
         res.send(error);
     }

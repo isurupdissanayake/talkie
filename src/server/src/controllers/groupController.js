@@ -10,7 +10,7 @@ async function CreateGroup(body) {
         const doc = {...body};
         const result = await groups.insertOne(doc);
         console.log(`group created with ID: ${result.insertedId}`)
-
+        return result.insertedId
     } finally {
         await client.close();
     }
